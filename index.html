@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سامانه مدیریت پروژه پتروپالایشگاه نگین بندرعباس</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- منوی کناری -->
+        <div id="sidebar-container"></div>
+
+        <!-- محتوای اصلی -->
+        <main class="main-content">
+
+            <header class="top-header">
+                <div>
+                    <h1>داشبورد مدیریتی پروژه</h1>
+                    <p>پتروپالایشگاه نگین بندرعباس</p>
+                </div>
+
+                <div class="user-info">
+                    <span id="server-status">در حال بررسی سرور...</span>
+                    <span>مدیر سامانه</span>
+                </div>
+            </header>
+
+            <!-- کارت‌های شاخص -->
+            <section class="summary-cards">
+
+                <div class="summary-card">
+                    <h3>پیشرفت برنامه‌ای</h3>
+                    <strong>--</strong>
+                    <span>درصد</span>
+                </div>
+
+                <div class="summary-card">
+                    <h3>پیشرفت واقعی</h3>
+                    <strong>--</strong>
+                    <span>درصد</span>
+                </div>
+
+                <div class="summary-card">
+                    <h3>انحراف از برنامه</h3>
+                    <strong>--</strong>
+                    <span>درصد</span>
+                </div>
+
+                <div class="summary-card">
+                    <h3>وضعیت پروژه</h3>
+                    <strong>در حال طراحی</strong>
+                    <span>Basic Engineering / FEED</span>
+                </div>
+
+            </section>
+
+            <!-- بخش اطلاعات پروژه -->
+            <section class="content-panel">
+
+                <h2>اطلاعات کلی پروژه</h2>
+
+                <div class="project-details">
+                    <p><strong>نام پروژه:</strong> پتروپالایشگاه نگین بندرعباس</p>
+<p>Bandar Abbas Negin Petro-Refinery</p>
+                    <p><strong>کد پروژه:</strong> BNPRC</p>
+                    <p><strong>ظرفیت طراحی:</strong> ۳۰۰ هزار بشکه در روز</p>
+                    <p><strong>مرحله فعلی:</strong> Basic Engineering / FEED</p>
+                    <p><strong>وضعیت سامانه:</strong> نسخه اولیه در حال توسعه</p>
+                </div>
+
+            </section>
+
+            <!-- بخش ارتباط با سرور -->
+            <section class="content-panel">
+
+                <h2>ارتباط با سرور مرکزی</h2>
+
+                <p id="api-message">
+                    در انتظار دریافت اطلاعات از سرور...
+                </p>
+
+            </section>
+
+            <footer class="page-footer">
+                BNPRC Project Management System
+                <span>نسخه توسعه اولیه</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="js/load-sidebar.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

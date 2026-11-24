@@ -1,0 +1,445 @@
+
+/* تنظیمات عمومی */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    direction: rtl;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* منوی کناری */
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: #14283f;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.brand {
+    padding: 28px 20px;
+    border-bottom: 1px solid #34465b;
+}
+
+.brand h2 {
+    font-size: 25px;
+    color: #60a5fa;
+    margin-bottom: 8px;
+}
+
+.brand p {
+    font-size: 13px;
+    color: #cbd5e1;
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 12px;
+    gap: 5px;
+}
+
+.main-menu a {
+    color: #dbeafe;
+    text-decoration: none;
+    padding: 13px 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.main-menu a:hover,
+.main-menu a.active {
+    background: #2563eb;
+    color: white;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 20px 12px;
+    text-align: center;
+    font-size: 10px;
+    color: #94a3b8;
+    border-top: 1px solid #34465b;
+}
+
+/* محتوای اصلی */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 28px;
+}
+
+.top-header {
+    background: white;
+    padding: 22px 25px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.top-header h1 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.top-header p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 12px;
+}
+
+/* کارت‌های مدیریتی */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    background: white;
+    padding: 23px 20px;
+    border-radius: 12px;
+    border-right: 4px solid #2563eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.summary-card h3 {
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.summary-card strong {
+    display: block;
+    font-size: 23px;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.summary-card span {
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+/* پنل‌های اطلاعاتی */
+.content-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.content-panel h2 {
+    font-size: 17px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.project-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+#api-message {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.page-footer {
+    display: flex;
+    justify-content: space-between;
+    color: #94a3b8;
+    font-size: 11px;
+    padding: 15px 5px;
+}
+
+/* نمایش در صفحه‌های کوچک */
+@media (max-width: 900px) {
+    .summary-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .main-menu {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .top-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .summary-cards,
+    .project-details {
+        grid-template-columns: 1fr;
+    }
+}
+/* هدر بخش برند و دکمه منو */
+.brand-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#sidebar-toggle {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* آماده‌سازی منو برای تغییر اندازه */
+.sidebar {
+    transition: width 0.3s ease;
+}
+/* حالت جمع‌شده منوی کناری */
+.app-container.sidebar-collapsed .sidebar {
+    width: 78px;
+    min-width: 78px;
+    flex: 0 0 78px;
+    overflow: hidden;
+}
+
+/* مخفی کردن توضیح زیر عنوان برند */
+.app-container.sidebar-collapsed .brand p {
+    display: none;
+}
+
+/* کوچک کردن عنوان برند */
+.app-container.sidebar-collapsed .brand h2 {
+    font-size: 14px;
+}
+
+/* نمایش فشرده گزینه‌های منو */
+.app-container.sidebar-collapsed .sidebar a {
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0;
+}
+
+/* نمایش حرف اول هر گزینه به‌صورت موقت */
+.app-container.sidebar-collapsed .sidebar a::first-letter {
+    font-size: 16px;
+}
+/* جلوگیری از حذف دکمه منو در حالت جمع‌شده */
+.app-container.sidebar-collapsed .brand-header {
+    justify-content: center;
+    gap: 0;
+}
+
+.app-container.sidebar-collapsed #sidebar-toggle {
+    display: block;
+    flex-shrink: 0;
+    font-size: 18px;
+    padding: 6px 10px;
+    min-width: 38px;
+}
+
+.app-container.sidebar-collapsed .brand h2 {
+    display: none;
+}
+/* چیدمان آیکون و متن منو */
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* اندازه و جایگاه آیکون */
+.menu-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    font-size: 19px;
+}
+
+/* متن گزینه‌های منو */
+.menu-text {
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* حالت جمع‌شده منو */
+.app-container.sidebar-collapsed .sidebar a {
+    font-size: 14px;
+    justify-content: center;
+    gap: 0;
+}
+
+/* مخفی کردن متن در حالت جمع‌شده */
+.app-container.sidebar-collapsed .menu-text {
+    display: none;
+}
+
+/* نمایش آیکون در حالت جمع‌شده */
+.app-container.sidebar-collapsed .menu-icon {
+    font-size: 21px;
+}
+
+/* =====================================
+   BNPRC - Planning & Project Controls
+===================================== */
+
+.page-content {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.page-header {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.page-header h1 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #14283f;
+}
+
+.page-header p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.8;
+}
+
+.panel {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+}
+
+.panel h2 {
+    font-size: 17px;
+    color: #14283f;
+    margin-bottom: 12px;
+}
+
+.panel p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 2;
+}
+
+/* نمایش در موبایل */
+@media (max-width: 600px) {
+    .page-header,
+    .panel {
+        padding: 17px;
+    }
+
+    .page-header h1 {
+        font-size: 18px;
+    }
+
+    .panel h2 {
+        font-size: 15px;
+    }
+}
+/* فرم ثبت فعالیت */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.form-grid label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #334155;
+}
+
+.form-grid input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 13px;
+}
+
+#add-activity {
+    background: #14283f;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+#add-activity:hover {
+    background: #2563eb;
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنامه‌ریزی و کنترل پروژه | BNPRC</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- منوی کناری مشترک -->
+        <div id="sidebar-container"></div>
+
+        <!-- محتوای اصلی -->
+        <main class="main-content">
+
+            <div class="page-content">
+
+                <header class="page-header">
+                    <h1>برنامه‌ریزی و کنترل پروژه</h1>
+                    <p>سامانه مدیریت پروژه پتروپالایشگاه نگین بندرعباس</p>
+                </header>
+
+                <section class="panel">
+    <h2>ثبت فعالیت جدید</h2>
+
+    <form id="activity-form">
+
+        <div class="form-grid">
+
+            <div>
+                <label for="activity-code">کد فعالیت</label>
+                <input type="text" id="activity-code" placeholder="مثلاً ENG-001">
+            </div>
+
+            <div>
+                <label for="activity-name">شرح فعالیت</label>
+                <input type="text" id="activity-name" placeholder="عنوان فعالیت">
+            </div>
+
+            <div>
+                <label for="activity-duration">مدت فعالیت (روز)</label>
+                <input type="number" id="activity-duration" min="1">
+            </div>
+
+            <div>
+                <label for="activity-start">تاریخ شروع</label>
+                <input type="date" id="activity-start">
+            </div>
+
+            <div>
+                <label for="activity-finish">تاریخ پایان</label>
+                <input type="date" id="activity-finish">
+            </div>
+
+            <div>
+                <label for="activity-progress">درصد پیشرفت</label>
+                <input type="number" id="activity-progress" min="0" max="100" value="0">
+            </div>
+
+        </div>
+
+        <button type="button" id="add-activity">ثبت فعالیت</button>
+
+    </form>
+                </section>
+
+                <section class="panel">
+                    <h2>فهرست فعالیت‌های ثبت‌شده</h2>
+
+                    <div class="table-container">
+                        <table id="activities-table">
+                            <thead>
+                                <tr>
+                                    <th>کد فعالیت</th>
+                                    <th>شرح فعالیت</th>
+                                    <th>مدت (روز)</th>
+                                    <th>تاریخ شروع</th>
+                                    <th>تاریخ پایان</th>
+                                    <th>پیشرفت (%)</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="activities-list">
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <h2>مدیریت برنامه زمان‌بندی</h2>
+                    <p>مدیریت برنامه زمان‌بندی کلان، فعالیت‌ها، نقاط عطف و مسیر بحرانی پروژه</p>
+                </section>
+
+                <section class="panel">
+                    <h2>کنترل پیشرفت پروژه</h2>
+                    <p>ثبت و پایش پیشرفت فیزیکی، مهندسی، تدارکات و اجرا</p>
+                </section>
+
+                <section class="panel">
+                    <h2>مدیریت عملکرد پروژه</h2>
+                    <p>تحلیل شاخص‌های SPI، CPI و ارزش کسب‌شده (EVM)</p>
+                </section>
+
+                <section class="panel">
+                    <h2>گزارش‌های برنامه‌ریزی و کنترل</h2>
+                    <p>گزارش‌های دوره‌ای، انحرافات برنامه و تحلیل وضعیت پروژه</p>
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- بارگذاری منوی مشترک -->
+    <script src="../js/load-sidebar.js"></script>
+
+    <script>
+    const form = document.getElementById("activity-form");
+    const activitiesList = document.getElementById("activities-list");
+    const addButton = document.getElementById("add-activity");
+
+    addButton.addEventListener("click", function () {
+
+        const code = document.getElementById("activity-code").value.trim();
+        const name = document.getElementById("activity-name").value.trim();
+        const duration = document.getElementById("activity-duration").value;
+        const start = document.getElementById("activity-start").value;
+        const finish = document.getElementById("activity-finish").value;
+        const progress = document.getElementById("activity-progress").value;
+
+        if (!code || !name || !duration || !start || !finish) {
+            alert("لطفاً تمام اطلاعات ضروری را وارد کنید.");
+            return;
+        }
+
+        const row = document.createElement("tr");
+
+        [code, name, duration, start, finish, progress + "%"].forEach(function (value) {
+            const cell = document.createElement("td");
+            cell.textContent = value;
+            row.appendChild(cell);
+        });
+
+        activitiesList.appendChild(row);
+
+        form.reset();
+        document.getElementById("activity-progress").value = 0;
+
+        alert("فعالیت با موفقیت به جدول اضافه شد.");
+    });
+</script>
+</body>
+</html>
